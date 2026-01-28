@@ -1,0 +1,242 @@
+# Breast Cancer Prediction System - Deployment Guide
+
+## Complete Step-by-Step Instructions
+
+### Author: Ogah Victor (22CG031902)
+### Date: January 2026
+
+---
+
+## PART 1: PREPARE YOUR PROJECT LOCALLY
+
+### 1.1 Verify Project Structure
+```
+BreastCancer_Project_OgahVictor_22CG031902/
+├── app.py
+├── requirements.txt
+├── BreastCancer_hosted_webGUI_link.txt
+├── model/
+│   ├── model_building.ipynb
+│   ├── breast_cancer_model.pkl
+│   └── scaler.pkl
+├── static/
+│   └── (optional styling files)
+└── templates/
+    └── (optional HTML files)
+```
+
+### 1.2 Test Locally
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the Streamlit app
+streamlit run app.py
+
+# Open browser at http://localhost:8501
+```
+
+---
+
+## PART 2: GITHUB SETUP
+
+### 2.1 Create GitHub Repository
+1. Go to https://github.com/new
+2. Repository name: `BreastCancer_Project_OgahVictor_22CG031902`
+3. Description: "Breast Cancer Prediction System using Logistic Regression"
+4. Make it **PUBLIC**
+5. Click "Create repository"
+
+### 2.2 Initialize Git & Push Code
+```bash
+# Navigate to your project directory
+cd BreastCancer_Project_OgahVictor_22CG031902
+
+# Initialize git
+git init
+
+# Add all files
+git add .
+
+# Create initial commit
+git commit -m "Initial commit: Breast Cancer Prediction System"
+
+# Add remote repository
+git remote add origin https://github.com/YOUR_USERNAME/BreastCancer_Project_OgahVictor_22CG031902.git
+
+# Push to GitHub
+git branch -M main
+git push -u origin main
+```
+
+### 2.3 Verify on GitHub
+- Visit your GitHub repo: https://github.com/YOUR_USERNAME/BreastCancer_Project_OgahVictor_22CG031902
+- Verify all files are uploaded
+
+---
+
+## PART 3: DEPLOY TO RENDER
+
+### 3.1 Create Render Account
+1. Go to https://render.com
+2. Sign up with GitHub account (recommended for easy integration)
+3. Verify your email
+
+### 3.2 Create New Web Service
+1. Click "New +" button → "Web Service"
+2. Connect your GitHub account if not already connected
+3. Select your repository: `BreastCancer_Project_OgahVictor_22CG031902`
+4. Click "Connect"
+
+### 3.3 Configure Service Settings
+```
+Service Name: breast-cancer-predictor
+Environment: Python 3
+Build Command: pip install -r requirements.txt
+Start Command: streamlit run app.py --server.port=10000
+```
+
+### 3.4 Configure Environment Settings
+1. Click "Advanced"
+2. Add Environment Variable:
+   - Key: `STREAMLIT_SERVER_PORT`
+   - Value: `10000`
+
+3. Add another variable:
+   - Key: `STREAMLIT_SERVER_ENABLECORS`
+   - Value: `false`
+
+4. Add another variable:
+   - Key: `STREAMLIT_SERVER_HEADLESS`
+   - Value: `true`
+
+### 3.5 Deploy
+1. Click "Create Web Service"
+2. Wait for build to complete (3-5 minutes)
+3. Once deployed, you'll see your live URL: `https://breast-cancer-predictor-xxxx.onrender.com`
+
+### 3.6 Test Live Application
+1. Visit the URL provided by Render
+2. Test the prediction with sample data
+3. Verify all features work correctly
+
+---
+
+## PART 4: UPDATE SUBMISSION FILES
+
+### 4.1 Update BreastCancer_hosted_webGUI_link.txt
+
+After deployment, update the file with:
+
+```
+Name: Ogah Victor
+Matric Number: 22CG031902
+Machine Learning Algorithm Used: Logistic Regression
+Model Persistence Method: Joblib (.pkl files)
+Live URL: https://breast-cancer-predictor-xxxx.onrender.com
+GitHub Repository Link: https://github.com/YOUR_USERNAME/BreastCancer_Project_OgahVictor_22CG031902
+```
+
+### 4.2 Verify All Files Before Submission
+- ✓ app.py
+- ✓ requirements.txt
+- ✓ BreastCancer_hosted_webGUI_link.txt
+- ✓ model/model_building.ipynb
+- ✓ model/breast_cancer_model.pkl
+- ✓ model/scaler.pkl
+
+---
+
+## PART 5: SUBMIT TO SCORAC
+
+### 5.1 Prepare Final Package
+Create a ZIP file with the structure:
+
+```
+BreastCancer_Project_OgahVictor_22CG031902.zip
+├── app.py
+├── requirements.txt
+├── BreastCancer_hosted_webGUI_link.txt
+├── model/
+│   ├── model_building.ipynb
+│   ├── breast_cancer_model.pkl
+│   └── scaler.pkl
+└── static/ (if applicable)
+```
+
+### 5.2 Submit on Scorac
+1. Go to your course page on Scorac
+2. Click on the assignment submission link
+3. Upload the ZIP file
+4. Submit before **11:59 PM on January 22, 2026**
+
+---
+
+## TROUBLESHOOTING
+
+### Issue: Build fails on Render
+**Solution:**
+- Check requirements.txt syntax
+- Ensure all package versions are compatible
+- View build logs on Render dashboard
+
+### Issue: App crashes after deployment
+**Solution:**
+- Check Render logs: Dashboard → Select Service → Logs
+- Verify model files exist in correct location
+- Test locally first before deploying
+
+### Issue: Model files not found
+**Solution:**
+- Ensure model/ directory is in repository
+- Files should be: `model/breast_cancer_model.pkl` and `model/scaler.pkl`
+- Check file paths in app.py are correct
+
+### Issue: Slow prediction
+**Solution:**
+- This is normal for Render free tier during first request
+- Subsequent requests will be faster
+
+---
+
+## IMPORTANT NOTES
+
+1. **Keep GitHub updated**: After any changes, push to GitHub
+2. **Model files size**: Keep .pkl files under 100MB for faster deployment
+3. **Dependencies**: Only use packages in requirements.txt
+4. **Deployment time**: First deployment takes 3-5 minutes
+5. **Render free tier**: App may sleep after 15 minutes of inactivity
+6. **DEADLINE**: Submit before 11:59 PM on January 22, 2026
+
+---
+
+## QUICK REFERENCE COMMANDS
+
+```bash
+# Local testing
+streamlit run app.py
+
+# Git commands
+git add .
+git commit -m "your message"
+git push origin main
+
+# Requirements update (if needed)
+pip freeze > requirements.txt
+```
+
+---
+
+## SUPPORT
+
+If you encounter issues:
+1. Check Render logs for error messages
+2. Review this guide's troubleshooting section
+3. Verify local testing works first
+4. Check GitHub for file integrity
+
+---
+
+**Good luck with your submission! 🚀**
+
+*Educational Purpose Only - Covenant University CSC 415*
